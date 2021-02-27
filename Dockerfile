@@ -7,19 +7,6 @@ FROM quay.io/parkervcp/pterodactyl-images:base_debian
 
 LABEL author="Torsten Widmann" maintainer="info@goover.de"
 
-export templdpath=$LD_LIBRARY_PATH
-
-# BepInEx-specific settings
-export DOORSTOP_ENABLE=TRUE
-export DOORSTOP_INVOKE_DLL_PATH=./BepInEx/core/BepInEx.Preloader.dll
-export DOORSTOP_CORLIB_OVERRIDE_PATH=./unstripped_corlib
-
-export LD_LIBRARY_PATH=./doorstop_libs:$LD_LIBRARY_PATH
-export LD_PRELOAD=libdoorstop_x64.so:$LD_PRELOAD
-
-export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
-export SteamAppId=892970
-
 ## install reqs
 RUN dpkg --add-architecture i386 \
  && apt update \

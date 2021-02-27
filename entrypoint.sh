@@ -4,9 +4,22 @@ sleep 1
 # Make internal Docker IP address available to processes.
 export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
+export templdpath=$LD_LIBRARY_PATH
+
+# BepInEx-specific settings
+export DOORSTOP_ENABLE=TRUE
+export DOORSTOP_INVOKE_DLL_PATH=./BepInEx/core/BepInEx.Preloader.dll
+export DOORSTOP_CORLIB_OVERRIDE_PATH=./unstripped_corlib
+
+export LD_LIBRARY_PATH=./doorstop_libs:$LD_LIBRARY_PATH
+export LD_PRELOAD=libdoorstop_x64.so:$LD_PRELOAD
+
+export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
+export SteamAppId=892970
+
 ## just in case someone removed the defaults.
 if [ "${STEAM_USER}" == "" ]; then
-    echo -e "steam user is not set.\n"
+    echo -e "Steam User is not set.\n"
     echo -e "Using anonymous user.\n"
     STEAM_USER=anonymous
     STEAM_PASS=""
