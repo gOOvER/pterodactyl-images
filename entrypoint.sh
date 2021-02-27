@@ -8,10 +8,11 @@ export templdpath=$LD_LIBRARY_PATH
 
 # BepInEx-specific settings
 export DOORSTOP_ENABLE=TRUE
-export DOORSTOP_INVOKE_DLL_PATH=./BepInEx/core/BepInEx.Preloader.dll
-export DOORSTOP_CORLIB_OVERRIDE_PATH=./unstripped_corlib
+export DOORSTOP_INVOKE_DLL_PATH="$PATH:$HOME/BepInEx/core/BepInEx.Preloader.dll"
+export DOORSTOP_INVOKE_DLL_PATH="$PATH:$HOME/BepInEx/core/BepInEx.Preloader.dll"
+export DOORSTOP_CORLIB_OVERRIDE_PATH="$PATH:$HOME/unstripped_corlib"
 
-export LD_LIBRARY_PATH=./doorstop_libs:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$PATH:$HOME/doorstop_libs:$LD_LIBRARY_PATH"
 export LD_PRELOAD=libdoorstop_x64.so:$LD_PRELOAD
 
 export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
